@@ -4,26 +4,28 @@ const shortId = require('shortid');
 
 const Schema = mongoose.Schema;
 
-const shortUrlSchema = new Schema({
-    full: {
+const myUrlSchema = new Schema({
+    longUrl: {
         type: String,
         required: true
     },
-    short: {
+    shortUrl: {
         type: String,
         required: true,
         default: shortId.generate
     },
-    clicks: {
+    views: {
         type: Number,
         required: true, 
         default: 0
     },
     date: {
-        type: String
+        type: String,
+        default: "N/A",
+        required: true
     }
 })
 
 // takes the name of the model & the Schema (name) as arguments
 // This name can be whatever name we give it
-module.exports = mongoose.model("ShortUrl", shortUrlSchema)
+module.exports = mongoose.model("NewUrl", myUrlSchema)

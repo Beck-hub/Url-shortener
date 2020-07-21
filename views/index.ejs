@@ -4,15 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rowdies:wght@300&display=swap" rel="stylesheet"> 
     <link href="style.css" rel="stylesheet" type="text/css">
+</head>
 
 </head>
 <body>
-    <h1>FCC: URL Shortener Project</h1>
-    <form action="/shortUrls " method="POST">
-        <label for="fullUrl">Url</label>
-        <input type="url" name="fullUrl" id="fullUrl" placeholder="http:// or https://">
-        <button type="submit">Submit</button>
+    <header>
+        <h1>URL Shortener <br> <span>(FCC backend project #3)</span></h1>
+        <img src="/img/url.png" width="185" height="150" />
+    </header>
+       
+    <form action="/shortenedUrl" method="POST">
+        <label for="longUrl">My URL: </label>
+        <input type="url" name="longUrl" id="longUrl" placeholder="http:// or https://">
+        <button type="submit"><span>Get Your URL</span></button>
     </form>
    
     <div className="titles">
@@ -24,10 +30,11 @@
     
 
     <ul>
-        <% shortUrls.forEach(shortUrl => { %>
-            <li> <a href="<%=shortUrl.full %> "target="_blank"><%=shortUrl.full %></a></li>
-            <li> <a href="<%=shortUrl.full %> "target="_blank"><%=shortUrl.short %></a></li>
-            <li>  <%=shortUrl.clicks %></li>
+        <% findUrls.map(myUrl => { %>
+            <li> <a href="<%=myUrl.longUrl %> "target="_blank"><%=myUrl.longUrl %></a></li>
+            <li> <a href="<%=myUrl.shortUrl %> "target="_blank"><%=myUrl.shortUrl %></a></li>
+            <li>  <%=myUrl.views %></li>
+            <li>  <%=myUrl.date %></li>
             <% }) %>
 
     </ul>

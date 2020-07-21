@@ -1,9 +1,14 @@
+
+* {
+    box-sizing: border-box;
+}
 body {
-	font-size: 24px;
-	color: #222;
-	background-color: green;
-	text-align: center;
-	line-height: 1.4em;
+    background: pink;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    font-family: 'Rowdies', cursive;
+    line-height: 1.2em;
 }
 input {
   min-height: 25px;
@@ -34,7 +39,139 @@ h5 {
     display: inline-block;
 }
 div {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 1em;
+    list-style: none;
+    justify-items: center;
+}
+header {
     display: flex;
     width: 100%;
-    justify-content: space-around;
+    border: 1px solid green;
+    border-radius: 1%;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 1em;
 }
+img {
+    order: 0;
+    flex-grow: 1;
+    padding: .25em;
+}
+h1 {
+    order: 1;
+    flex-grow: 1;
+    margin-left: 1em;
+    font-size: 2.2em;
+    
+}
+span {
+    font-size: .5em;
+}
+form {
+    display: flex; 
+    justify-content: center;
+    flex-direction: row;
+    border: 1px solid blue;
+    width: 100%;
+    min-height: 10vh;
+    align-items: center;
+}
+input {
+    margin: 0 .5em;
+    min-width: 225px;
+    min-height: 40px;
+    border: 1px solid #ccc;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	-moz-box-shadow: 2px 2px 3px #666;
+	-webkit-box-shadow: 2px 2px 3px #666;
+	box-shadow: 2px 2px 3px #666;
+    padding: 4px 7px;
+    font-size: 1em;
+    margin: 0 4em;
+	outline: 0;
+    -webkit-appearance: none;
+}
+input:focus {
+	border-color: #339933;
+}
+button {
+    padding: .1em .25em;
+    border-radius: 5px;
+    text-align: center;
+    min-width: 75px;
+    transition: all 0.4s;
+    font-size: 1.5em;
+    margin-left: .5em;
+    font-weight: bold;
+    cursor: pointer;
+    -moz-box-shadow: 2px 2px 5px #666;
+	-webkit-box-shadow: 2px 2px 5px #666;
+    box-shadow: 2px 2px 5px #666;
+    border: none;
+}
+
+button span {
+    display: inline-block;
+    position: relative;
+    transition: .4s;
+
+}
+button span:after {
+    content: '\00bb'; /*special characters >> */
+    position: absolute;
+    opacity: 0;
+    top:0;
+    right: 5px;
+    transition: .4s;
+}
+button:hover span{ /* includes text + eventually special character */
+    cursor: pointer;
+    padding-right: 25px;
+    color: blue;
+    
+    
+    
+}
+button:hover {
+    background-color: red;
+    padding: .1em .45em;
+}
+button:hover span:after { /* this is for the special character */
+    opacity: 1;
+    right: 5px;
+    top: -7px;
+    font-size: 1.75em;
+   
+}
+
+label {
+    font-size: 1.4em;
+    padding-top: .1em;
+    font-weight: bold;
+    text-shadow: 2px 2px rgb(132, 128, 128);
+
+  }
+  ul {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 1em;
+    list-style: none;
+    min-height: 30vh;
+    justify-items: center;
+  
+  }
+  li {
+      list-style-type: none;
+      align-self: center;
+  }
+  footer {
+      width: 100%;
+      border: 1px solid blue;
+      display: flex;
+      justify-content: center;
+  }
+  /* https://electrictoolbox.com/css3-rounded-corner-input/ */
