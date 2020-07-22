@@ -11,23 +11,23 @@
 </head>
 <body>
     <header>
-        <h1>URL Shortener <br> <span>(FCC backend project #3)</span></h1>
-        <img src="/img/url.png" width="185" height="150" />
+        <h1>URL Shortener <br> <span id="title-desc">(FCC backend project #3)</span></h1>
+        <img src="/img/url.png" width="150px" height="150px" />
     </header>
        
     <form action="/shortenedUrl" method="POST">
         <label for="longUrl">My URL: </label>
-        <input type="url" name="longUrl" id="longUrl" placeholder="http:// or https://">
-        <button type="submit"><span>Get Your URL</span></button>
+        <input contenteditable="true" type="url" name="longUrl" id="longUrl" placeholder="http:// or https://" required/>
+
+        <button type="submit"><span id="btn-desc">Get Your URL </span></button>
     </form>
    
     <div className="titles">
-        <h5>URL</h5>
-        <h5>Short URL</h5>
-        <h5>Views</h5>
-        <h5>Time Last Clicked</h5>
+        <h4>URL</h4>
+        <h4>Short URL</h4>
+        <h4>Views</h4>
+        <h4>Last Visited</h4>
     </div>
-    
 
     <ul>
         <% findUrls.map(myUrl => { %>
@@ -36,7 +36,9 @@
             <li>  <%=myUrl.views %></li>
             <li>  <%=myUrl.date %></li>
             <% }) %>
-
     </ul>
+    <footer>
+        Created for the Free Code Camp Backend Challenge #3, using: <span id="description"> Node, Express, Mongoose, ejs, CSS, shortid</span> 
+    </footer>
 </body>
 </html>

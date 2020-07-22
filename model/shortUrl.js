@@ -28,4 +28,4 @@ const myUrlSchema = new Schema({
 
 // takes the name of the model & the Schema (name) as arguments
 // This name can be whatever name we give it
-module.exports = mongoose.model("NewUrl", myUrlSchema)
+module.exports = mongoose.model("myNewUrl", myUrlSchema)

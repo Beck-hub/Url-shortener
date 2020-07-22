@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const NewUrl = require('./model/shortUrl'); // We can now use our model in this file
+const myNewUrl = require('./model/shortUrl'); // We can now use our model in this file
 
 const app = express();
 app.use(cors());
@@ -15,7 +15,7 @@ app.set("view engine", "ejs");
 
 mongoose.connect('mongodb://localhost/urlShortener', { useNewUrlParser: true, useUnifiedTopology: true  } )
 app.get("/", async (req,res) => {
-    const findUrls = await NewUrl.find(); // returns everything
+    const findUrls = await myNewUrl.find(); // returns everything
     //must use async & await or you will get not what you want here
     res.render('index', {findUrls: findUrls}) // we can pass on our model to index
 
@@ -24,9 +24,9 @@ app.post("/shortenedUrl", async (req,res) => {
     // we want to connect to our database & create a new short url
     // create a new model:
     try {
-    await NewUrl.create({longUrl:req.body.longUrl}) // this is the name of the input in the ejs file
-    // it is an async action that happens in the background
-    // we want to wait for this creation before moving on
+      await myNewUrl.create({longUrl: req.body.longUrl}) // this is the name of the input in the ejs file
+      // it is an async action that happens in the background
+      // we want to wait for this creation before moving on
     } catch {
         res.json({error: "This is an error message"})
     }
@@ -37,12 +37,11 @@ app.post("/shortenedUrl", async (req,res) => {
 // on the newly generated short url that will lead us to the next site
 app.get("/:shortUrl", async (req,res )=> {
     try {
-      const shortUrl = await NewUrl.findOne({shortUrl: req.params.shortUrl}) // find one based on the short key, if the value of the short key is equal to the parameter entered
-      shortUrl.views++ // if the user clicks on this => increase the # clicks in the model
+      const shortUrl = await myNewUrl.findOne({shortUrl: req.params.shortUrl}) // find one based on the short key, if the value of the short key is equal to the parameter entered
+      shortUrl.views++; // if the user clicks on this => increase the # clicks in the model
       shortUrl.date = new Date().toUTCString();
       shortUrl.save(); // update the model/save
       res.redirect(shortUrl.longUrl) // and redirect the user to the site (the longUrl url)
-      console.log(shortUrl)
     } catch {
         res.json({error: "This is an error message"})
 
